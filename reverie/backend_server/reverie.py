@@ -621,8 +621,8 @@ if __name__ == '__main__':
     origin = input("Enter the name of the forked simulation [base_the_ville_isabella_maria_klaus]: ").strip()
     if origin == "":
       origin = "base_the_ville_isabella_maria_klaus"
-  from random import random
-  target = args.simulation or "sim-"+str(random()*1000)
+  from random import randint
+  target = args.simulation or "sim-"+str(randint(0,10000))
   rs = ReverieServer(origin, target)
   rs.open_server()
   if origin == "": origin = "base_the_ville_isabella_maria_klaus"

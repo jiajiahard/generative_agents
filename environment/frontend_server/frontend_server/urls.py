@@ -21,12 +21,14 @@ from django.conf.urls.static import static
 
 from translator import views as translator_views
 
+#url(r'^replay_persona_state/(?P<sim_code>[\w-]+)/(?P<step>[\w-]+)/(?P<persona_name>[\w-]+)/$', translator_views.replay_persona_state, name='replay_persona_state'),
+#    path('replay_persona_state/<slug:sim_code>/<int:step>/<slug:persona_name>/', translator_views.replay_persona_state, name='replay_persona_state'),
 urlpatterns = [
     url(r'^$', translator_views.landing, name='landing'),
     url(r'^simulator_home$', translator_views.home, name='home'),
     url(r'^demo/(?P<sim_code>[\w-]+)/(?P<step>[\w-]+)/(?P<play_speed>[\w-]+)/$', translator_views.demo, name='demo'),
-    url(r'^replay/(?P<sim_code>[\w-]+)/(?P<step>[\w-]+)/$', translator_views.replay, name='replay'),
-    url(r'^replay_persona_state/(?P<sim_code>[\w-]+)/(?P<step>[\w-]+)/(?P<persona_name>[\w-]+)/$', translator_views.replay_persona_state, name='replay_persona_state'),
+    path('replay_persona_state/<slug:sim_code>/<int:step>/<slug:persona_name>/', translator_views.replay_persona_state, name='replay_persona_state'),
+    url(r'^replay_persona_state/(?P<sim_code>[\s]+)/(?P<step>[\w-]+)/(?P<persona_name>[\w-]+)/$', translator_views.replay_persona_state, name='replay_persona_state'),
     url(r'^process_environment/$', translator_views.process_environment, name='process_environment'),
     url(r'^update_environment/$', translator_views.update_environment, name='update_environment'),
     url(r'^path_tester/$', translator_views.path_tester, name='path_tester'),
